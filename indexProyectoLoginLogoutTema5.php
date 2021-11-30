@@ -12,7 +12,7 @@ if (isset($_REQUEST['salir'])) {
 }
 //Comprobar si se ha pulsado el boton iniciar sesion
 if (isset($_REQUEST['iniciarSesion'])) {
-    header('Location: ../208DWESLoginLogoutTema5/codigoPHP/logIn.php');
+    header('Location: ../208DWESLoginLogoutTema5/codigoPHP/loginOut.php');
     exit;
 }
 ?>
@@ -33,6 +33,30 @@ Fecha Modificacion: 30/11/2021 -->
         <link rel="shortcut icon" href="favicon.ico">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>AroaGO</title>
+        <style>
+            .button{
+                height: 57px;
+                width: 30%;
+                margin-top: 20%;
+                border-radius: 20px;
+                background: -webkit-linear-gradient(#FF5252, #FF4081); /* For Safari 5.1 to 6.0*/
+                background: -o-linear-gradient(#FF5252, #FF4081); /* For Opera 11.1 to 12.0*/    
+                background: -moz-linear-gradient(#FF5252, #FF4081); /* For Firefox 3.6 to 15*/
+                background: linear-gradient(#FF5252, #FF4081); /*Standard syntax*/             
+                border:none;
+            }
+            .button:hover{
+                background: -webkit-linear-gradient(#3794a0, #29a85e); /* For Safari 5.1 to 6.0*/
+                background: -o-linear-gradient(#3794a0, #29a85e); /* For Opera 11.1 to 12.0*/    
+                background: -moz-linear-gradient(#3794a0, #29a85e); /* For Firefox 3.6 to 15*/
+                background: linear-gradient(#3794a0, #29a85e); /*Standard syntax*/  
+            }
+            form{
+                text-align: center;
+                display: block;
+
+            }
+        </style>
     </head>
     <body>
         <header>
@@ -40,8 +64,8 @@ Fecha Modificacion: 30/11/2021 -->
         </header>
         <main>
             <form >
-                <input type="submit" value="Iniciar sesión" name="iniciarSesion" class="iniciarsesion"/>
-                <input type="submit" value="SALIR" name="salir" class="salir"/>
+                <input type="submit" value="Iniciar sesión" name="iniciarSesion" class="button"/>
+                <input type="submit" value="SALIR" name="salir" class="button"/>
             </form>
         </main>
         <footer id="footerP">
