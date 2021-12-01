@@ -1,5 +1,22 @@
   
-
+<?php
+/*
+ * @author: Aroa Granero Omañas
+ * @version: v1
+ * Created on: 1/12/2021
+ * Last modification: 1/12/2021
+ */
+//Recupera la sesión del Login
+session_start();
+//Si no hay una sesión iniciada te manda al Login
+if (!isset($_SESSION['usuarioDAW208AppLoginLogout'])) {
+    header('Location: login.php');
+}
+if (isset($_REQUEST['volver'])) {
+    header("Location:programa.php");
+    exit;
+}
+?>
 
 
 <!DOCTYPE html>
@@ -19,202 +36,102 @@ Fecha Modificacion: 30/11/2021 -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Detalle</title>
         <style>
-            /* Add a black background color to the top navigation */
-            .topnav {
-                background-color: #333;
-                overflow: hidden;
-                margin-bottom: 30px;
-            }
-
-            /* Style the links inside the navigation bar */
-            .topnav a {
-                float: left;
-                color: #f2f2f2;
-                text-align: center;
-                padding: 14px 16px;
-                text-decoration: none;
-                font-size: 20px;
-            }
-
-            /* Change the color of links on hover */
-            .topnav a:hover {
-                background-color: rgb(77, 157, 182);
-                color: black;
+            html { 
+                background: url(https://cdn.magdeleine.co/wp-content/uploads/2015/08/SW_Blake-Bronstad.jpg) no-repeat center center fixed; 
+                
             }
             table{
                 margin-left: auto;
                 margin-right: auto;
+                background: white;
             }
             td,tr{
                 border: solid 3px cadetblue;
             }
+            input{
+                font-family: 'Open Sans Condensed', sans-serif;
+                text-decoration: none;
+                position: relative;
+                width: 80%;
+                display: block;
+                margin: 9px auto;
+                font-size: 17px;
+                color: #fff;
+                padding: 8px;
+                border-radius: 6px;
+                border: none;
+                background: rgba(3,3,3,.1);
+                -webkit-transition: all 2s ease-in-out;
+                -moz-transition: all 2s ease-in-out;
+                -o-transition: all 2s ease-in-out;
+                transition: all 0.2s ease-in-out;
+            }
+
+            input:focus{
+                outline: none;
+                box-shadow: 3px 3px 10px #333;
+                background: rgba(3,3,3,.5);
+            }
+
+            /* Placeholders */
+            ::-webkit-input-placeholder {
+                color: #ddd;  }
+            :-moz-placeholder { /* Firefox 18- */
+                color: red;  }
+            ::-moz-placeholder {  /* Firefox 19+ */
+                color: red;  }
+            :-ms-input-placeholder {  
+                color: #333;  }
+            body{
+              background-color: rgba(3,3,3,.1);
+            }
+           
         </style>
     </head>
     <body>
-        <div class="topnav">
-            <a href="../codigoPHP/loginOut.php">&#8666;</a>
-            <a href="https://github.com/aroago/208DWESProyectoTema5">GitHub</a>
-           
-            <a href="../../index.php">&#127968;</a>
-        </div>
-
+        <form>
+            <input type="submit" value="Volver" name="volver" class="volver"/>
+        </form>
         <h1>Mostrar el contenido de las variables superglobales</h1>
         <!–– Muestra del contenido de la variable $_SERVER con foreach()––>
-
         <?php
-        /*
-         * @author: Aroa Granero Omañas
-         * @version: v1
-         * Created on: 30/11/2021
-         * Last modification: 30/11/2021
-         */
-        if (!empty($_SERVER)) {
-            ?>
-            <h2>Mostrar $_SERVER con foreach()</h2>
-            <table><tr><th>Clave</th><th>Valor</th></tr>
-                <?php foreach ($_SERVER as $clave => $valor) { ?>
-                    <tr>
-                        <td><strong><?php echo $clave ?></strong></td>
-                        <td><?php echo $valor ?></td>
-                    </tr>
-                    <?php
-                }
-                ?>
-            </table>
-            <br>
-            <?php
+        echo '<h3>Mostrar el contenido de las variables superglobales:</h3>  ';
+        // El contenido de $_SESSION
+        echo '<h3>Mostrar el contenido de $_SESSION :</h3>  ';
+        echo '<table><tr><th>Clave</th><th>Valor</th></th>';
+        foreach ($_SESSION as $Clave => $Valor) {
+            echo '<tr>';
+            echo "<td>$Clave</td>";
+            echo "<td>$Valor</td>";
+            echo '</tr>';
         }
-        ?>
+        echo '</table>';
 
-        <!–– Muestra del contenido de la variable $_REQUEST con foreach()––>
-        <?php if (!empty($_REQUEST)) { ?>
-            <h2>Mostrar $_REQUEST con foreach()</h2>
-            <table><tr><th>Clave</th><th>Valor</th></tr>
-                <?php foreach ($_REQUEST as $clave => $valor) { ?>
-                    <tr>
-                        <td><strong><?php echo $clave ?></strong></td>
-                        <td><?php echo $valor ?></td>
-                    </tr>
-                    <?php
-                }
-                ?>
-            </table>
-            <br>
-            <?php
+        // El contenido de $_COOKIE
+        echo '<h3>Mostrar el contenido de $_COOKIE :</h3>  ';
+        echo '<table><tr><th>Clave</th><th>Valor</th></th>';
+        foreach ($_COOKIE as $Clave => $Valor) {
+            echo '<tr>';
+            echo "<td>$Clave</td>";
+            echo "<td>$Valor</td>";
+            echo '</tr>';
         }
-        ?>
+        echo '</table>';
 
-        <!–– Muestra del contenido de la variable $_GET con foreach()––>
-        <?php if (!empty($_GET)) { ?>
-            <h2>Mostrar $_GET con foreach()</h2>
-            <table><tr><th>Clave</th><th>Valor</th></tr>
-                <?php foreach ($_GET as $clave => $valor) { ?>
-                    <tr>
-                        <td><strong><?php echo $clave ?></strong></td>
-                        <td><?php echo $valor ?></td>
-                    </tr>
-                    <?php
-                }
-                ?>
-            </table>
-            <br>
-            <?php
-        }
-        ?>
 
-        <!–– Muestra del contenido de la variable $_FILES con foreach()––>
-        <?php if (!empty($_FILES)) { ?>
-            <h2>Mostrar $_FILES con foreach()</h2>
-            <table><tr><th>Clave</th><th>Valor</th></tr>
-                <?php foreach ($_FILES as $clave => $valor) { ?>
-                    <tr>
-                        <td><strong><?php echo $clave ?></strong></td>
-                        <td><?php echo $valor ?></td>
-                    </tr>
-                    <?php
-                }
-                ?>
-            </table>
-            <br>
-            <?php
-        }
-        ?>
 
-        <!–– Muestra del contenido de la variable $_ENV con foreach()––>
-        <?php if (!empty($_ENV)) { ?>
-            <h2>Mostrar $_ENV con foreach()</h2>
-            <table><tr><th>Clave</th><th>Valor</th></tr>
-                <?php foreach ($_ENV as $clave => $valor) { ?>
-                    <tr>
-                        <td><strong><?php echo $clave ?></strong></td>
-                        <td><?php echo $valor ?></td>
-                    </tr>
-                    <?php
-                }
-                ?>
-            </table>
-            <br>
-            <?php
-        }
-        ?>
 
-        <!–– Muestra del contenido de la variable $_POST con foreach()––>
-        <?php if (!empty($_POST)) { ?>
-            <h2>Mostrar $_POST con foreach()</h2>
-            <table><tr><th>Clave</th><th>Valor</th></tr>
-                <?php foreach ($_POST as $clave => $valor) { ?>
-                    <tr>
-                        <td><strong><?php echo $clave ?></strong></td>
-                        <td><?php echo $valor ?></td>
-                    </tr>
-                    <?php
-                }
-                ?>
-            </table>
-            <br>
-            <?php
+        echo '<h3>Mostrar el contenido de $_SERVER :</h3>  ';
+        echo '<table><tr><th>Clave</th><th>Valor</th></th>';
+        /* usando foreach() */
+        foreach ($_SERVER as $Clave => $Valor) {
+            echo '<tr>';
+            echo "<td>$Clave</td>";
+            echo "<td>$Valor</td>";
+            echo '</tr>';
         }
-        ?>
+        echo '</table>';
 
-        <!–– Muestra del contenido de la variable $_COOKIE con foreach()––>
-        <?php if (!empty($_COOKIE)) { ?>
-            <h2>Mostrar $_COOKIE con foreach()</h2>
-            <table ><tr><th>Clave</th><th>Valor</th></tr>
-                <?php foreach ($_COOKIE as $clave => $valor) { ?>
-                    <tr>
-                        <td><strong><?php echo $clave ?></strong></td>
-                        <td><?php echo $valor ?></td>
-                    </tr>
-                    <?php
-                }
-                ?>
-            </table>
-            <br>
-            <?php
-        }
-        ?>
-
-        <!–– Muestra del contenido de la variable $_SESSION con foreach()––>
-        <?php if (!empty($_SESSION)) { ?>
-            <h2>Mostrar $_SESSION con foreach()</h2>
-            <table><tr><th>Clave</th><th>Valor</th></tr>
-                <?php foreach ($_SESSION as $clave => $valor) { ?>
-                    <tr>
-                        <td><strong><?php echo $clave ?></strong></td>
-                        <td><?php echo $valor ?></td>
-                    </tr>
-                    <?php
-                }
-                ?>
-            </table>
-            <br>
-            <?php
-        }
-        ?>
-        //mostrar phpInfo
-        <h1>Mostrar PHPINFO()</h1>
-        <?php
-        //phpinfo() utilizada para saber todala informacion y todo lo que contiene mi php.
         phpinfo();
         ?>
     </body>

@@ -12,7 +12,7 @@ if (isset($_REQUEST['salir'])) {
 }
 //Comprobar si se ha pulsado el boton iniciar sesion
 if (isset($_REQUEST['iniciarSesion'])) {
-    header('Location: ../208DWESLoginLogoutTema5/codigoPHP/loginOut.php');
+    header('Location: ../208DWESLoginLogoutTema5/codigoPHP/login.php');
     exit;
 }
 ?>
