@@ -42,7 +42,7 @@ img{
   width: 260px;
   height: 260px;
   border-radius: 5px;
-  background: rgba(3,3,3,0.25);
+  background: rgba(3,3,3,0.6);
   box-shadow: 1px 1px 50px #000;
 }
 
@@ -89,17 +89,21 @@ input{
   display: block;
   margin: 9px auto;
   font-size: 17px;
-  color: #fff;
+  background: rgba(160, 234, 238, 0.51);
+  color:#fff;
   padding: 8px;
   border-radius: 6px;
   border: none;
-  background: rgba(3,3,3,.1);
+ 
   -webkit-transition: all 2s ease-in-out;
   -moz-transition: all 2s ease-in-out;
   -o-transition: all 2s ease-in-out;
   transition: all 0.2s ease-in-out;
 }
-
+.button{
+     width: 20%;
+     background: rgba(6, 187, 211, 0.3);
+}
 input:focus{
   outline: none;
   box-shadow: 3px 3px 10px #333;
@@ -128,14 +132,31 @@ input:focus{
   opacity: 0.7;
 }
 
-
-
-
-
-
-
-
-
+.piepagina{
+    font-family: "Gotham-Medium";
+    font-size: 19px;
+    background-color:#00000045;
+    position: fixed;
+    bottom: 0;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    right: 0px;
+    left: 0px;
+}
+.piepagina p{
+    color:#fff;
+    text-align:center;
+    margin-left: 31px;
+}
+.piepagina p:first-of-type{
+    margin-top: 6px;
+}
+.imagegithub{
+    margin-right:5px;
+    float: right;
+    width: 43px;
+    height: 43px;
+}
 
 .orange-btn{
   background: rgba(87,198,255,.5);

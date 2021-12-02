@@ -89,7 +89,7 @@ if ($entradaOK) { //Si la entrada es correcta
 
         session_start(); //Creo una nueva sesion o recupero una existente
         $_SESSION['usuarioDAW208AppLoginLogout'] = $_REQUEST['CodUsuario']; //Almaceno el usuario en $_SESSION
-        $_SESSION['FechaHoraUltimaConexion'] = $ultimaConexion; //Almaceno la ultima conexion en $SESSION
+        $_SESSION['FechaHoraUltimaConexionAnterior'] = $ultimaConexion; //Almaceno la ultima conexion en $SESSION
 
         header('Location: programa.php'); //Mando a el usuario a la pagina programa.php
         exit;
@@ -126,7 +126,7 @@ if ($entradaOK) { //Si la entrada es correcta
             <div id="container">
                 <h1>Log In</h1>
                 <span class="close-btn">
-                    <img src="https://cdn4.iconfinder.com/data/icons/miu/22/circle_close_delete_-128.png"></img>
+                    <a href="../indexProyectoLoginLogoutTema5.php"> <img src="https://cdn4.iconfinder.com/data/icons/miu/22/circle_close_delete_-128.png"></a>
                 </span>
 
                 <form action="<?php $_SERVER['PHP_SELF'] ?>" method="Post">
@@ -136,6 +136,10 @@ if ($entradaOK) { //Si la entrada es correcta
 
                 </form>
             </div>
+            <footer class="piepagina">
+                <a href="https://github.com/aroago/208DWESLoginLogoutTema5" target="_blank"><img src="../webroot/img/github.png" class="imagegithub" alt="IconoGitHub" /></a>
+                <p><a>&copy;</a>2021 Todos los derechos reservados AroaGO<p>
+            </footer>
             <?php
         }
         ?>

@@ -36,9 +36,12 @@ Fecha Modificacion: 30/11/2021 -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Detalle</title>
         <style>
+            body{
+              background-color: rgba(3,3,3,.1);
+            }
             html { 
                 background: url(https://cdn.magdeleine.co/wp-content/uploads/2015/08/SW_Blake-Bronstad.jpg) no-repeat center center fixed; 
-                
+                background-color: rgba(3,3,3,.1);
             }
             table{
                 margin-left: auto;
@@ -72,7 +75,6 @@ Fecha Modificacion: 30/11/2021 -->
                 box-shadow: 3px 3px 10px #333;
                 background: rgba(3,3,3,.5);
             }
-
             /* Placeholders */
             ::-webkit-input-placeholder {
                 color: #ddd;  }
@@ -82,15 +84,16 @@ Fecha Modificacion: 30/11/2021 -->
                 color: red;  }
             :-ms-input-placeholder {  
                 color: #333;  }
-            body{
-              background-color: rgba(3,3,3,.1);
-            }
-           
+            
+           .button{
+     width: 20%;
+     background: rgba(6, 187, 211, 0.3);
+}
         </style>
     </head>
     <body>
         <form>
-            <input type="submit" value="Volver" name="volver" class="volver"/>
+            <input type="submit" value="Volver" name="volver" class="button"/>
         </form>
         <h1>Mostrar el contenido de las variables superglobales</h1>
         <!–– Muestra del contenido de la variable $_SERVER con foreach()––>

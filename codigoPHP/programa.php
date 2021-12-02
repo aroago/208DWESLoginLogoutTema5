@@ -37,17 +37,16 @@ try {
 
     $consulta = "SELECT T01_DescUsuario, T01_NumConexiones FROM T01_Usuario WHERE T01_CodUsuario=:CodUsuario"; //Consulta para actualizar el total de conexiones y la fechahora de la ultima conexion
     $resultadoConsulta = $mydb->prepare($consulta); //Preparo la consulta antes de ejecutarla
-    $parametros = [ //guardo en un parametro el usuario obtenido en la sesion del login
+    $parametros = [//guardo en un parametro el usuario obtenido en la sesion del login
         ":CodUsuario" => $_SESSION['usuarioDAW208AppLoginLogout']
     ];
-    $resultadoConsulta->execute($parametros);//Ejecuto la consulta con el array de parametros
-    
+    $resultadoConsulta->execute($parametros); //Ejecuto la consulta con el array de parametros
+
     $oUsuario = $resultadoConsulta->fetchObject(); //Obtengo el primer registro de la consulta
     $nombreUsuario = $oUsuario->T01_DescUsuario; //Guardo en la variable nombreUsuario el nombre del usuario logeado con exito
     $conexionesUsuario = $oUsuario->T01_NumConexiones; //Guardo en la variable conexionesUsuario el total de conexiones realizadas del usuario logeado con exito
-    
-    $ultimaConexionUsuario = $_SESSION['FechaHoraUltimaConexion']; //Guardo en la variable ultimaConexionUsuario la fecha de la ultima conexion del usuario logeado con exito
-    
+
+    $ultimaConexionUsuario = $_SESSION['FechaHoraUltimaConexionAnterior']; //Guardo en la variable ultimaConexionUsuario la fecha de la ultima conexion del usuario logeado con exito
     //Cuando se produce una excepcion se corta el programa y salta la excepción con el mensaje de error
 } catch (PDOException $mensajeError) {
     echo "<h3>Mensaje de ERROR</h3>";
@@ -96,5 +95,9 @@ Fecha Modificacion: 30/11/2021 -->
             <input class="button" type="submit" name="detalle" value="detalle"/>
             <input class="button" type="submit" name="logout" value="logout"/>
         </form>
+        <footer class="piepagina">
+            <a href="https://github.com/aroago/208DWESLoginLogoutTema5" target="_blank"><img src="../webroot/img/github.png" class="imagegithub" alt="IconoGitHub" /></a>
+            <p><a>&copy;</a>2021 Todos los derechos reservados AroaGO<p>
+        </footer>
     </body>
 </html>
