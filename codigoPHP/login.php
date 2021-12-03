@@ -32,21 +32,17 @@ if (isset($_REQUEST['entrar'])) { //Si le ha dado al boton de enviar valido los 
             $mydb = new PDO(HOST, USER, PASSWORD); //Hago la conexion con la base de datos
             $mydb->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // Establezco el atributo para la aparicion de errores con ATTR_ERRMODE y le pongo que cuando haya un error se lance una excepcion con ERRMODE_EXCEPTION
 
-            $consulta = "SELECT T01_NumConexiones, T01_FechaHoraUltimaConexion, T01_Password FROM T01_Usuario WHERE T01_CodUsuario=:CodUsuario"; //Creo la consulta y le paso el usuario a la consulta
+            $consulta = "SELECT T01_FechaHoraUltimaConexion FROM T01_Usuario WHERE T01_CodUsuario=:CodUsuario AND T01_Password=:Password"; //Creo la consulta y le paso el usuario a la consulta
             $resultadoConsulta = $mydb->prepare($consulta); // Preparo la consulta antes de ejecutarla
             $aParametros1 = [
-                ":CodUsuario" => $_REQUEST['CodUsuario']
+                ":CodUsuario" => $_REQUEST['CodUsuario'],
+                ":Password" => hash("sha256", ($_REQUEST['CodUsuario'] . $_REQUEST['Password']))
             ];
             $resultadoConsulta->execute($aParametros1); //Ejecuto la consulta con el array de parametros
-
             $oUsuario = $resultadoConsulta->fetchObject(); //Obtengo un objeto con el usuario y su password
-            if ($resultadoConsulta->rowCount() > 0) { //Si la consulta tiene algun registro
-                $passwordEncriptada = hash("sha256", ($_REQUEST['CodUsuario'] . $_REQUEST['Password'])); //Encripto la password que ha introducido el usuario
-                if ($oUsuario->T01_Password != $passwordEncriptada) { //Compruebo si la password es correcta
-                    $aErrores['Password'] = "Password incorrecta."; //Si no es correcta, almaceno el error en el array de errores
-                }
-            } else { //Si no he recibido ningun registro no existe el usuario en la DB
-                $aErrores['CodUsuario'] = "El usuario no existe."; //Si no es correcto, almaceno el error en el array de errores
+
+            if (!$oUsuario) { //Si la consulta no devuelve ningun resultado, el usuario no existe o la password no coincide con el usuario introducido
+                $entradaOK = false; //Le doy el valor false a la entrada
             }
         } catch (PDOException $excepcion) {//Codigo que se ejecuta si hay algun error
             $errorExcepcion = $excepcion->getCode(); //Obtengo el codigo del error y lo almaceno en la variable errorException
@@ -130,8 +126,12 @@ if ($entradaOK) { //Si la entrada es correcta
                 </span>
 
                 <form action="<?php $_SERVER['PHP_SELF'] ?>" method="Post">
-                    <input type="text" name="CodUsuario" id="username"  placeholder="username">
-                    <input type="password" name="Password" id="password" placeholder="password">
+                    <input type="text" name="CodUsuario" id="username"  placeholder="username"value=" <?php echo isset($_REQUEST['CodUsuario']) ? $_REQUEST['CodUsuario'] : null; ?>" 
+                           placeholder="Introduzca el nombre de usuario">
+                           <?php echo '<p class="errores"><span>' . $aErrores['CodUsuario'] . '</span></p>' ?>
+                    <input type="password" name="Password" id="password" placeholder="password"value=" <?php echo isset($_REQUEST['Password']) ? $_REQUEST['Password'] : null; ?>" 
+                           placeholder="Introduzca la password">
+                           <?php echo '<p class="errores"><span>' . $aErrores['Password'] . '</span></p>' ?>
                     <input type="submit" name="entrar" id="btnlogin" value="ENTRAR">
 
                 </form>
@@ -140,8 +140,8 @@ if ($entradaOK) { //Si la entrada es correcta
                 <a href="https://github.com/aroago/208DWESLoginLogoutTema5" target="_blank"><img src="../webroot/img/github.png" class="imagegithub" alt="IconoGitHub" /></a>
                 <p><a>&copy;</a>2021 Todos los derechos reservados AroaGO<p>
             </footer>
-            <?php
-        }
-        ?>
+    <?php
+}
+?>
     </body>
 </html>
