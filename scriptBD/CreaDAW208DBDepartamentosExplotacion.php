@@ -6,8 +6,6 @@
  * @author Aroa Granero Omañas
  * Fecha Creacion:  19/11/2021
  * Última modificación: 22/11/2021
- *  Crear tabla Departamento con los campos (PK)CodDepartamento (3 letras mayusculas), 
- *  DescDepartamento (max. 255 caracteres),FechaBaja, VolumenNegocio (float-€)
  */
 require_once '../config/confDBPDO.php';
 
@@ -17,15 +15,26 @@ try {
     $mydb->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); //Configuramos las excepciones
     // Array de atributos de la conexión.
     /* Usar base de datos dbs4868804*/
-    $consulta = $mydb->prepare(<<<SQL
-    CREATE TABLE Departamento (
-    CodDepartamento VARCHAR(3) PRIMARY KEY,
-    DescDepartamento VARCHAR(255) NOT NULL,
-    FechaBaja DATE NULL,
-    VolumenNegocio FLOAT DEFAULT NULL
-    ) ENGINE = INNODB;
-    SQL);
-    $consulta->execute(); //Ejecuto la consulta
+    $consulta = <<<CONSULTA
+                USE dbs4868804;
+                CREATE TABLE IF NOT EXISTS T01_Usuario(
+                    T01_CodUsuario varchar(10) PRIMARY KEY,
+                    T01_Password varchar(64) NOT NULL,
+                    T01_DescUsuario varchar(255) NOT NULL,
+                    T01_NumConexiones int DEFAULT 0,
+                    T01_FechaHoraUltimaConexion int,
+                    T01_Perfil enum('administrador', 'usuario') DEFAULT 'usuario',
+                    T01_ImagenUsuario mediumblob NULL
+                )engine=innodb;
+                CREATE TABLE IF NOT EXISTS T02_Departamento(
+                    T02_CodDepartamento varchar(3) PRIMARY KEY,
+                    T02_DescDepartamento varchar(255) NOT NULL,
+                    T02_FechaCreacionDepartamento int NULL,
+                    T02_VolumenDeNegocio float NULL,
+                    T02_FechaBajaDepartamento date NULL
+                )engine=innodb;
+                CONSULTA;
+     $mydb->exec($consulta); //Ejecuto la consulta
     echo "<h3>Conexion Establecida con Exito</<h3>";
     
 } catch (PDOException $excepcion) {//Código que se ejecutará si se produce alguna excepción
