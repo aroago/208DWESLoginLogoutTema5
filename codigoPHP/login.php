@@ -3,7 +3,7 @@
  * @author: Aroa Granero Omañas
  * @version: v1
  * Created on: 30/11/2021
- * Last modification: 1/12/2021
+ * Last modification: 03/12/2021
  */
 
 require_once '../core/libreriaValidacion.php'; //Incluyo la libreria de validacion
@@ -107,7 +107,7 @@ if ($entradaOK) { //Si la entrada es correcta
     <!DOCTYPE html>
     <!--Aroa Granero Omañas 
     Fecha Creacion: 30/11/2021
-    Fecha Modificacion: 1/12/2021 -->
+    Fecha Modificacion: 03/12/2021 -->
     <html>
         <head>
             <meta charset="UTF-8">
@@ -139,9 +139,10 @@ if ($entradaOK) { //Si la entrada es correcta
             <footer class="piepagina">
                 <a href="https://github.com/aroago/208DWESLoginLogoutTema5" target="_blank"><img src="../webroot/img/github.png" class="imagegithub" alt="IconoGitHub" /></a>
                 <p><a>&copy;</a>2021 Todos los derechos reservados AroaGO<p>
+                    <p>Fecha Modificación:03/12/2021<p>
             </footer>
-            <?php
-        }
-        ?>
+    <?php
+}
+?>
     </body>
 </html>

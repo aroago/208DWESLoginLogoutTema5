@@ -1,4 +1,4 @@
 ErrorDocument 403 /errors/403.html
 ErrorDocument 404 /errors/404.html
-DirectoryIndex indexProyectoTema5.php
+DirectoryIndex indexProyectoLoginLogoutTema5.php
 Redirect 301 /proyectoTema5/google https://www.google.es/
