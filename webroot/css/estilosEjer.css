@@ -1,41 +1,164 @@
-  /* Add a black background color to the top navigation */
-            .topnav {
-                background-color: #333;
-                overflow: hidden;
-                margin-bottom: 30px;
-            }
+  html { 
+  background: url(https://cdn.magdeleine.co/wp-content/uploads/2015/08/SW_Blake-Bronstad.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  overflow: hidden;
+}
 
-            /* Style the links inside the navigation bar */
-            .topnav a {
-                float: left;
-                color: #f2f2f2;
-                text-align: center;
-                padding: 14px 16px;
-                text-decoration: none;
-                font-size: 20px;
-            }
+img{
+  display: block;
+  margin: auto;
+  width: 100%;
+  height: auto;
+}
 
-            /* Change the color of links on hover */
-            .topnav a:hover {
-                background-color: rgb(77, 157, 182);
-                color: black;
-            }
-            table{
-                margin-left: auto;
-                margin-right: auto;
-            }
-            td,tr{
-                border: solid 3px cadetblue;
-            }
-            .container{
-                width: 100%;
-                padding: 45px 0px 45px 0px;
-                background: #28B463;
-                border-radius: 15px;
-            }
-            .bienvenido{
-                font-size: 25px;
-                text-align: center;
-                color:white;
-            }
+#login-button{
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 30px;
+  margin: auto;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: rgba(3,3,3,.8);
+  overflow: hidden;
+  opacity: 0.4;
+  box-shadow: 10px 10px 30px #000;}
+
+/* Login container */
+#container{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  width: 260px;
+  height: 260px;
+  border-radius: 5px;
+  background: rgba(3,3,3,0.6);
+  box-shadow: 1px 1px 50px #000;
+}
+
+.close-btn{
+  position: absolute;
+  cursor: pointer;
+  font-family: 'Open Sans Condensed', sans-serif;
+  line-height: 18px;
+  top: 3px;
+  right: 3px;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  border-radius: 10px;
+  opacity: .2;
+  -webkit-transition: all 2s ease-in-out;
+  -moz-transition: all 2s ease-in-out;
+  -o-transition: all 2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+.close-btn:hover{
+  opacity: .5;
+}
+
+/* Heading */
+h1{
+  font-family: 'Open Sans Condensed', sans-serif;
+  position: relative;
+  margin-top: 0px;
+  text-align: center;
+  font-size: 40px;
+  color: #ddd;
+  text-shadow: 3px 3px 10px #000;
+}
+
+/* Inputs */
+#btnlogin,
+input{
+  font-family: 'Open Sans Condensed', sans-serif;
+  text-decoration: none;
+  position: relative;
+  width: 80%;
+  display: block;
+  margin: 9px auto;
+  font-size: 17px;
+  background: rgba(160, 234, 238, 0.51);
+  color:#fff;
+  padding: 8px;
+  border-radius: 6px;
+  border: none;
+ 
+  -webkit-transition: all 2s ease-in-out;
+  -moz-transition: all 2s ease-in-out;
+  -o-transition: all 2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+.button{
+     width: 20%;
+     background: rgba(6, 187, 211, 0.3);
+}
+input:focus{
+  outline: none;
+  box-shadow: 3px 3px 10px #333;
+  background: rgba(3,3,3,.18);
+}
+
+/* Placeholders */
+::-webkit-input-placeholder {
+   color: #ddd;  }
+:-moz-placeholder { /* Firefox 18- */
+   color: red;  }
+::-moz-placeholder {  /* Firefox 19+ */
+   color: red;  }
+:-ms-input-placeholder {  
+   color: #333;  }
+
+/* Link */
+#btnlogin{
+  font-family: 'Open Sans Condensed', sans-serif;
+  text-align: center;
+  padding: 4px 8px;
+  background: rgba(107,255,3,0.3);
+}
+
+#btnlogin:hover{
+  opacity: 0.7;
+}
+
+.piepagina{
+    font-family: "Gotham-Medium";
+    font-size: 19px;
+    background-color:#00000045;
+    position: fixed;
+    bottom: 0;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    right: 0px;
+    left: 0px;
+}
+.piepagina p{
+    color:#fff;
+    text-align:center;
+    margin-left: 31px;
+}
+.piepagina p:first-of-type{
+    margin-top: 6px;
+}
+.imagegithub{
+    margin-right:5px;
+    float: right;
+    width: 43px;
+    height: 43px;
+}
+
+.orange-btn{
+  background: rgba(87,198,255,.5);
+}
             
