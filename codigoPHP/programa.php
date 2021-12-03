@@ -98,6 +98,7 @@ Fecha Modificacion: 30/11/2021 -->
         <footer class="piepagina">
             <a href="https://github.com/aroago/208DWESLoginLogoutTema5" target="_blank"><img src="../webroot/img/github.png" class="imagegithub" alt="IconoGitHub" /></a>
             <p><a>&copy;</a>2021 Todos los derechos reservados AroaGO<p>
+                <p>Fecha Modificación:03/12/2021<p>
         </footer>
     </body>
 </html>
