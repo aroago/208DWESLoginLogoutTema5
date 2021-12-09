@@ -9,7 +9,7 @@ if(isset ($_REQUEST["cancelar"])){ //Si el usuario le da al botón de cancelar.
 }
 
     require_once '../core/libreriaValidacion.php'; //Incluyo el archivo de la librería de validación para hacer comprobaciones posteriormente.
-    require_once '../config/confDBPDO.php'; //Incluyo el archivo de configuración a la base de datos PDO.
+    require_once '../config/configDBPDO.php'; //Incluyo el archivo de configuración a la base de datos PDO.
     
     try{
         $miDB = new PDO(HOST, USER, PASSWORD); //Establezco la conexión a la base de datos instanciado un objeto PDO.
@@ -109,6 +109,9 @@ if(isset ($_REQUEST["cancelar"])){ //Si el usuario le da al botón de cancelar.
             <title>Eitar Perfil</title>  
     </head>
     <body>
+        <header>
+            <h1>Editar Prefil</h1>
+        </header>
         <div id="containerRegistro">
             <form name="formulario" action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
                     <div>
@@ -144,7 +147,7 @@ if(isset ($_REQUEST["cancelar"])){ //Si el usuario le da al botón de cancelar.
                             if($nConexiones>1){
                         ?>
                             <h3>Última conexión: </h3>
-                            <input type="text" name="FechaHoraUltimaConexion" value="<?php echo date("d-m-Y H:i:s",$_SESSION["FechaHoraUltimaConexionAnterior"])?>" readonly>
+                            <input type="text" name="FechaHoraUltimaConexion" value="<?php echo date("d-m-Y H:i:s",$_SESSION["fechaHoraUltimaConexionAnterior"])?>" readonly>
                          <?php
                             }
                         ?>
@@ -157,8 +160,7 @@ if(isset ($_REQUEST["cancelar"])){ //Si el usuario le da al botón de cancelar.
             </div>
          <footer class="piepagina">
                 <a href="https://github.com/aroago/208DWESLoginLogoutTema5" target="_blank"><img src="../webroot/img/github.png" class="imagegithub" alt="IconoGitHub" /></a>
-                <p><a>&copy;</a>2021 Todos los derechos reservados AroaGO<p>
-                    <p>Fecha Modificación:09/12/2021<p>
+                <p><a>&copy;</a><a href="https://daw208.ieslossauces.es/">2021 Todos los derechos reservados AroaGO.</a> Fecha Modificación:09/12/2021</p> 
             </footer>
     </body>
 </html>
