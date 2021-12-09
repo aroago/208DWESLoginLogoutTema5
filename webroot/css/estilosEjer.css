@@ -14,7 +14,7 @@ img{
   height: auto;
 }
 
-#login-button{
+.login-button{
   cursor: pointer;
   position: absolute;
   top: 0;
@@ -40,12 +40,25 @@ img{
   bottom: 0;
   margin: auto;
   width: 260px;
-  height: 260px;
+  height: 290px;
   border-radius: 5px;
   background: rgba(3,3,3,0.6);
   box-shadow: 1px 1px 50px #000;
 }
-
+/* registro container */
+#containerRegistro{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  width: 460px;
+  height: 550px;
+  border-radius: 5px;
+  background: rgba(3,3,3,0.6);
+  box-shadow: 1px 1px 50px #000;
+}
 .close-btn{
   position: absolute;
   cursor: pointer;
@@ -78,9 +91,26 @@ h1{
   color: #ddd;
   text-shadow: 3px 3px 10px #000;
 }
-
+h3{
+  font-family: 'Open Sans Condensed', sans-serif;
+  position: relative;
+  margin-top: 0px;
+  padding-left: 10px;
+  font-size: 20px;
+  color: #ddd;
+  text-shadow: 3px 3px 10px #000;
+}
+h2{
+  font-family: 'Open Sans Condensed', sans-serif;
+  position: relative;
+  margin-top: 0px;
+  text-align: center;
+  font-size: 20px;
+  color: #ddd;
+  text-shadow: 3px 3px 10px #000;
+}
 /* Inputs */
-#btnlogin,
+.btnlogin,
 input{
   font-family: 'Open Sans Condensed', sans-serif;
   text-decoration: none;
@@ -121,14 +151,14 @@ input:focus{
    color: #333;  }
 
 /* Link */
-#btnlogin{
+.btnlogin{
   font-family: 'Open Sans Condensed', sans-serif;
   text-align: center;
   padding: 4px 8px;
   background: rgba(107,255,3,0.3);
 }
 
-#btnlogin:hover{
+.btnlogin:hover{
   opacity: 0.7;
 }
 
