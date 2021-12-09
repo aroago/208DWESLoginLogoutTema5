@@ -16,8 +16,7 @@ try {
     // Array de atributos de la conexión.
     /* Usar base de datos dbs4868804*/
     $consulta = <<<CONSULTA
-                USE dbs4868804;
-                CREATE TABLE IF NOT EXISTS T01_Usuario(
+                CREATE TABLE IF NOT EXISTS dbs4868804.T01_Usuario(
                     T01_CodUsuario varchar(10) PRIMARY KEY,
                     T01_Password varchar(64) NOT NULL,
                     T01_DescUsuario varchar(255) NOT NULL,

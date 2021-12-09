@@ -16,7 +16,6 @@ if (!isset($_SESSION['usuarioDAW208AppLoginLogout'])) {
 
 //En función del botón que se pulse, el programa se redirige a una u otra ventana
 if (isset($_POST["logout"])) {
-    session_unset();
     session_destroy();
     header('location: login.php');
     exit;

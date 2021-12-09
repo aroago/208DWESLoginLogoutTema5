@@ -36,21 +36,21 @@ if (isset($_REQUEST['entrar'])) { //Si le ha dado al boton de enviar valido los 
             $mydb = new PDO(HOST, USER, PASSWORD); //Hago la conexion con la base de datos
             $mydb->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // Establezco el atributo para la aparicion de errores con ATTR_ERRMODE y le pongo que cuando haya un error se lance una excepcion con ERRMODE_EXCEPTION
 
-            $consulta = "SELECT T01_NumConexiones, T01_FechaHoraUltimaConexion, T01_Password FROM T01_Usuario WHERE T01_CodUsuario=:CodUsuario"; //Creo la consulta y le paso el usuario a la consulta
-            $resultadoConsulta = $mydb->prepare($consulta); // Preparo la consulta antes de ejecutarla
+            $consulta = "SELECT T01_NumConexiones, T01_FechaHoraUltimaConexion FROM T01_Usuario WHERE T01_CodUsuario=:CodUsuario AND T01_Password=:Password"; //Creo la consulta y le paso el usuario a la consulta
+            $resultadoConsulta=$mydb->prepare($consulta); // Preparo la consulta antes de ejecutarla
             $aParametros1 = [
-                ":CodUsuario" => $_REQUEST['CodUsuario']
+                ":CodUsuario" => $_REQUEST['CodUsuario'],
+                ":Password" => hash("sha256", ($_REQUEST['CodUsuario'].$_REQUEST['Password']))
             ];
-            $resultadoConsulta->execute($aParametros1); //Ejecuto la consulta con el array de parametros
-
+            $resultadoConsulta->execute($aParametros1);//Ejecuto la consulta con el array de parametros
             $oUsuario = $resultadoConsulta->fetchObject(); //Obtengo un objeto con el usuario y su password
-            if ($resultadoConsulta->rowCount() > 0) { //Si la consulta tiene algun registro
-                $passwordEncriptada = hash("sha256", ($_REQUEST['CodUsuario'] . $_REQUEST['Password'])); //Encripto la password que ha introducido el usuario
-                if ($oUsuario->T01_Password != $passwordEncriptada) { //Compruebo si la password es correcta
-                    $aErrores['Password'] = "Password incorrecta."; //Si no es correcta, almaceno el error en el array de errores
-                }
-            } else { //Si no he recibido ningun registro no existe el usuario en la DB
-                $aErrores['CodUsuario'] = "El usuario no existe."; //Si no es correcto, almaceno el error en el array de errores
+            
+            if($resultadoConsulta->rowCount() == 0){ //Si la consulta no tiene ningun registro es que no esta bien el usuario o la password
+                $aErrores['Password'] = "Error en el login."; //Si no es correcto, almaceno el error en el array de errores
+            }
+            
+             if (!$oUsuario) { //Si la consulta no devuelve ningun resultado, el usuario no existe o la password no coincide con el usuario introducido
+                $entradaOK = false; //Le doy el valor false a la entrada
             }
         } catch (PDOException $excepcion) {//Codigo que se ejecuta si hay algun error
             $errorExcepcion = $excepcion->getCode(); //Obtengo el codigo del error y lo almaceno en la variable errorException
@@ -73,7 +73,7 @@ if (isset($_REQUEST['entrar'])) { //Si le ha dado al boton de enviar valido los 
     $entradaOK = false; //Le doy el valor false a entradaOK y se vuelve a mostrar el formulario
 }
 
-if ($entradaOK) { //Si la entrada es correcta
+if ($entradaOK) { //Si la entrada es correcta y  se han rellenado bien los datos
     try {
         $mydb = new PDO(HOST, USER, PASSWORD); //Hago la conexion con la base de datos
         $mydb->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // Establezco el atributo para la aparicion de errores con ATTR_ERRMODE y le pongo que cuando haya un error se lance una excepcion con ERRMODE_EXCEPTION
