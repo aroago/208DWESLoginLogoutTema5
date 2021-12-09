@@ -3,9 +3,8 @@
  * @author: Aroa Granero Omañas
  * @version: v1
  * Created on: 30/11/2021
- * Last modification: 30/11/2021
+ * Last modification: 09/12/2021
  */
-
 
 
 //Recupera la sesión del Login
@@ -27,7 +26,9 @@ if (isset($_POST["detalle"])) {
     header('Location: detalle.php');
     exit;
 }
-
+if(isset($_REQUEST['editar'])){ 
+    header('Location: editarPerfil.php');
+}
 //Fichero de configuración de la BBDD
 require_once '../config/confDBPDO.php';
 try {
@@ -62,7 +63,7 @@ try {
 <!DOCTYPE html>
 <!--Aroa Granero Omañas 
 Fecha Creacion: 30/11/2021
-Fecha Modificacion: 30/11/2021 -->
+Fecha Modificacion: 09/12/2021 -->
 <html>
     <head>
         <meta charset="UTF-8">
@@ -94,11 +95,12 @@ Fecha Modificacion: 30/11/2021 -->
         <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
             <input class="button" type="submit" name="detalle" value="detalle"/>
             <input class="button" type="submit" name="logout" value="logout"/>
+            <input class="button" type="submit" value="EDITAR PERFIL" name="editar">
         </form>
         <footer class="piepagina">
             <a href="https://github.com/aroago/208DWESLoginLogoutTema5" target="_blank"><img src="../webroot/img/github.png" class="imagegithub" alt="IconoGitHub" /></a>
             <p><a>&copy;</a>2021 Todos los derechos reservados AroaGO<p>
-                <p>Fecha Modificación:03/12/2021<p>
+                <p>Fecha Modificación:09/12/2021<p>
         </footer>
     </body>
 </html>

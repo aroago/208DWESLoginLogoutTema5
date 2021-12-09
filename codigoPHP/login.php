@@ -3,9 +3,13 @@
  * @author: Aroa Granero Omañas
  * @version: v1
  * Created on: 30/11/2021
- * Last modification: 03/12/2021
+ * Last modification: 09/12/2021
  */
 
+ if(isset($_REQUEST['registrate'])){ //Si el usuario pulse en registrarse.
+        header('Location: registro.php'); //Lo mando al formulario de registrarse.php. 
+    }
+    
 require_once '../core/libreriaValidacion.php'; //Incluyo la libreria de validacion
 require_once '../config/confDBPDO.php'; //Incluyo las variables de la conexion
 
@@ -107,7 +111,7 @@ if ($entradaOK) { //Si la entrada es correcta
     <!DOCTYPE html>
     <!--Aroa Granero Omañas 
     Fecha Creacion: 30/11/2021
-    Fecha Modificacion: 03/12/2021 -->
+    Fecha Modificacion: 09/12/2021 -->
     <html>
         <head>
             <meta charset="UTF-8">
@@ -132,14 +136,15 @@ if ($entradaOK) { //Si la entrada es correcta
                 <form action="<?php $_SERVER['PHP_SELF'] ?>" method="Post">
                     <input type="text" name="CodUsuario" id="username"  placeholder="username">
                     <input type="password" name="Password" id="password" placeholder="password">
-                    <input type="submit" name="entrar" id="btnlogin" value="ENTRAR">
-
+                    <input type="submit" name="entrar" class="btnlogin" value="ENTRAR">
+                    <h2>¿ERES NUEVO?</h2>
+                    <input type="submit" class="btnlogin" type="submit" value="Registrate" name="registrate">
                 </form>
             </div>
             <footer class="piepagina">
                 <a href="https://github.com/aroago/208DWESLoginLogoutTema5" target="_blank"><img src="../webroot/img/github.png" class="imagegithub" alt="IconoGitHub" /></a>
                 <p><a>&copy;</a>2021 Todos los derechos reservados AroaGO<p>
-                    <p>Fecha Modificación:03/12/2021<p>
+                    <p>Fecha Modificación:09/12/2021<p>
             </footer>
     <?php
 }
