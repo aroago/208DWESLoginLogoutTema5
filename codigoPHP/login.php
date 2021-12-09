@@ -78,19 +78,16 @@ if ($entradaOK) { //Si la entrada es correcta y  se han rellenado bien los datos
         $mydb = new PDO(HOST, USER, PASSWORD); //Hago la conexion con la base de datos
         $mydb->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // Establezco el atributo para la aparicion de errores con ATTR_ERRMODE y le pongo que cuando haya un error se lance una excepcion con ERRMODE_EXCEPTION
 
-        $numeroConexiones = $oUsuario->T01_NumConexiones; //Guardo el numero de conexiones que tiene la base de datos en una variable
-        $ultimaConexion = $oUsuario->T01_FechaHoraUltimaConexion; //Guardo la fechahora de la ultima conexion que tiene la base de datos en una variable
-
         $consultaUpdate = "UPDATE T01_Usuario SET T01_NumConexiones=:NumConexiones, T01_FechaHoraUltimaConexion=:FechaHoraUltimaConexion WHERE T01_CodUsuario=:CodUsuario"; //Consulta para actualizar el total de conexiones y la fechahora de la ultima conexion
         $resultadoConsultaUpdate = $mydb->prepare($consultaUpdate); // Preparo la consulta antes de ejecutarla
-
-        $aParametros3 = [//Array de parametros para el update
-            ":NumConexiones" => ($numeroConexiones + 1), //Le sumo al total de conexiones una mas para contar la actual
+        
+        $aParametros2 = [ //Array de parametros para el update
+            ":NumConexiones" => ($numeroConexiones+1), //Le sumo al total de conexiones una mas para contar la actual
             ":FechaHoraUltimaConexion" => time(), //Asigno hora local actual con una marca temporal usando time()
             ":CodUsuario" => $_REQUEST['CodUsuario'] //El usuario pasado en el formulario
         ];
-        $resultadoConsultaUpdate->execute($aParametros3); //Ejecuto la consulta con el array de parametros
-
+        $resultadoConsultaUpdate->execute($aParametros2);//Ejecuto la consulta con el array de parametros
+        
         session_start(); //Creo una nueva sesion o recupero una existente
         $_SESSION['usuarioDAW208AppLoginLogout'] = $_REQUEST['CodUsuario']; //Almaceno el usuario en $_SESSION
         $_SESSION['FechaHoraUltimaConexionAnterior'] = $ultimaConexion; //Almaceno la ultima conexion en $SESSION
