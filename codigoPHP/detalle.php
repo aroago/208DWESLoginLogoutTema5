@@ -1,4 +1,3 @@
-  
 <?php
 /*
  * @author: Aroa Granero Omañas
