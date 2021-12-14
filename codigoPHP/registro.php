@@ -108,7 +108,7 @@ if ($entradaOk) {
         </head>
         <body>
             <header>
-            <h1>Registro</h1>
+            <h1>Registro LoginLogout</h1>
         </header>
             <div id="containerRegistro">
                 <form name="formulario" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">

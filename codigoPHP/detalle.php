@@ -44,7 +44,7 @@ Fecha Modificacion: 30/11/2021 -->
     </head>
     <body>
         <header>
-            <h1>Detalle</h1>
+            <h1>Detalle  LoginLogout</h1>
         </header>
         <form>
             <input type="submit" value="volver" name="volver" class="button"/>

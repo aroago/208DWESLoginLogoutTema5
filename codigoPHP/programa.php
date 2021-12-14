@@ -29,7 +29,7 @@ if (isset($_REQUEST['detalle'])) { //Comprobar si se ha pulsado el boton detalle
     exit;
 }
 
-
+require_once '../config/configAPP.php'; //Incluyo el array de idiomas para la COOKIE
 require_once '../core/libreriaValidacion.php'; //Incluyo la libreria de validacion
 require_once '../config/configDBPDO.php'; //Incluyo las variables de la conexion
 
@@ -80,15 +80,14 @@ Fecha Modificacion: 09/12/2021 -->
     </head>
     <body>
 <header>
-            <h1>Programa</h1>
+            <h1>Programa LoginLogout</h1>
         </header>
         <?php if ($conexionesUsuario <= 1) { ?>
-            <h1><?php echo "Bienvenid@ " . $nombreUsuario ?></h1>
             <h1><?php echo "Esta es la primera vez que te conectas!" ?></h1>
             <?php
         } else {
             ?>
-            <h1><?php echo "Bienvenid@ " . $nombreUsuario ?></h1>
+             <h1><?php  echo $aIdioma[$_COOKIE['idioma']]['bienvenido'] . " " . $nombreUsuario ?></h1>
             <h1><?php echo "Es la " . $conexionesUsuario . "ª vez que te conectas." ?></h1>
             <h1><?php echo "Tu ultima conexion fue el " . date('d/m/Y H:i:s', $ultimaConexionUsuario) ?></h1>
             <?php

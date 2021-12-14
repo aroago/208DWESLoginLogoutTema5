@@ -1,5 +1,5 @@
   html { 
-  background: url(../img/fondogato.jpg) no-repeat center center fixed; 
+  background: url(https://cdn.magdeleine.co/wp-content/uploads/2015/08/SW_Blake-Bronstad.jpg) no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -191,6 +191,34 @@ input:focus{
 .orange-btn{
   background: rgba(87,198,255,.5);
 }
-header{
-    background: #00000045;
-}          
+.buttonidioma{
+    width: 225px;
+    font-size: 105%;
+    padding: 12px;
+    text-align: center;
+    background-color: #2525254f;
+    color: white;
+    text-transform: uppercase;
+    margin-left: 40%;
+    font-weight: bold;  
+}
+.esp{
+    width: 30px;
+    height: 20px;
+    cursor: pointer;
+}
+.uk{
+    width: 30px;
+    height: 20px;
+    cursor: pointer;
+}
+.italia{
+    width: 30px;
+    height: 20px;
+    cursor: pointer;
+}
+.tr{
+    width: 30px;
+    height: 20px;
+    cursor: pointer;
+}

@@ -7,7 +7,10 @@ if(!isset($_SESSION["usuarioDAW208AppLoginLogout"])){ //Compruebo que el usuario
 if(isset ($_REQUEST["cancelar"])){ //Si el usuario le da al botón de cancelar.
     header('Location: programa.php'); //Lo redirijo al programa.
 }
-
+if (isset($_REQUEST["cambiar"])) { //Si el usuario pulsa el boton cambiar Contrasenya
+    header("Location: CambiarPassword.php"); //Se redirige a cambiar la contrasenya
+    die();
+}
     require_once '../core/libreriaValidacion.php'; //Incluyo el archivo de la librería de validación para hacer comprobaciones posteriormente.
     require_once '../config/configDBPDO.php'; //Incluyo el archivo de configuración a la base de datos PDO.
     
@@ -110,16 +113,13 @@ if(isset ($_REQUEST["cancelar"])){ //Si el usuario le da al botón de cancelar.
     </head>
     <body>
         <header>
-            <h1>Editar Prefil</h1>
+            <h1>Editar Prefil LoginLogout</h1>
         </header>
         <div id="containerRegistro">
             <form name="formulario" action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
                     <div>
                         <h3>Código usuario: </h3>
                         <input  type="text" name="CodUsuario" value="<?php echo $_SESSION["usuarioDAW208AppLoginLogout"]; ?>" readonly>
-                    </div>
-                <br>
-                    <div>
                         <h3>Descripción del usuario: </h3>
                         <input  style="background: rgba(55, 236, 236, 0.51)" type="text" name="DescUsuario" value="<?php 
                                 if(isset($_REQUEST["DescUsuario"]) && $error == null){
@@ -135,15 +135,9 @@ if(isset ($_REQUEST["cancelar"])){ //Si el usuario le da al botón de cancelar.
                                 }
                             ?>
                         </span>
-                    </div>
-                <br>
-                    <div>
                         <h3>Número de conexiones: </h3>
                         <input  type="text" name="NumConexiones" value="<?php echo $nConexiones?>" readonly>
-                    </div>
-                <br>
-                    <div>
-                        <?php
+                          <?php
                             if($nConexiones>1){
                         ?>
                             <h3>Última conexión: </h3>
@@ -152,7 +146,10 @@ if(isset ($_REQUEST["cancelar"])){ //Si el usuario le da al botón de cancelar.
                             }
                         ?>
                     </div>
+               
+                  
                 <br>
+                <input type="submit" name="cambiar" class="btnlogin" value="Cambiar la contraseña">
                 <input type="submit" name="aceptar" class="btnlogin" value="ACEPTAR">
                 <input style="background: rgba(255, 3, 3, 0.3);" type="submit" name="cancelar" class="btnlogin" value="CANCELAR">
                  <input style="background: rgba(255, 3, 3, 0.3);" type="submit" name="eliminar" class="btnlogin" value="ELIMINAR USUARIO">

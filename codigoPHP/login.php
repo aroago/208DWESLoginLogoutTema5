@@ -10,7 +10,7 @@ if (isset($_REQUEST['registrate'])) { //Si se ha pulsado entro en registrarme
     header('Location: registro.php'); //Redireccion a registro mediante el header
     exit;
 }
-
+require_once '../config/configAPP.php'; //Incluyo el array de idiomas para la COOKIE
 require_once '../core/libreriaValidacion.php'; //Incluyo la libreria de validacion
 require_once '../config/configDBPDO.php'; //Incluyo las variables de la conexion
 
@@ -105,6 +105,7 @@ if ($entradaOK) { //Si la entrada es correcta
         unset($mydb); //Cierro la conexion
     }
 } else {
+   
     ?>
 
     <!DOCTYPE html>
@@ -127,7 +128,7 @@ if ($entradaOK) { //Si la entrada es correcta
         </head>
         <body>
             <div id="container">
-                <h1>Log In</h1>
+                <h1>Log In LoginLogout</h1>
                 <span class="close-btn">
                     <a href="../indexProyectoLoginLogoutTema5.php"> <img src="https://cdn4.iconfinder.com/data/icons/miu/22/circle_close_delete_-128.png"></a>
                 </span>
