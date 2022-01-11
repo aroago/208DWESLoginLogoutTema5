@@ -17,7 +17,7 @@ if (isset($_REQUEST['iniciarSesion'])) {
 }
 if (!isset($_COOKIE['idioma'])) {
     setcookie("idioma", "esp", time() + 2000002); //Pongo el idioma en español y el tiempo de expiracion en +2000002
-    header('Location: ../207DWESLoginLogoutTema5/indexProyectoLoginLogoutTema5.php');
+    header('Location: ../208DWESLoginLogoutTema5/indexProyectoLoginLogoutTema5.php');
     exit;
 }
 //
@@ -30,7 +30,7 @@ require_once './config/configAPP.php'; //Incluyo el array de idiomas para la COO
 <!DOCTYPE html>
 <!--Aroa Granero Omañas 
 Fecha Creacion: 30/11/2021
-Fecha Modificacion: 30/11/2021 -->
+Fecha Modificacion: 11/1/2022 -->
 <html lang="es">
     <head>
         <meta charset="UTF-8">
@@ -53,18 +53,18 @@ Fecha Modificacion: 30/11/2021 -->
         </header>
         <main>
             <form>
-                <button type="submit" value="esp" name="idiomaBotonSeleccionado" ><img src="../207DWESLoginLogoutTema5/webroot/img/esp.png" class="esp" alt="imagenes"></button>
-                <button type="submit" value="uk" name="idiomaBotonSeleccionado" ><img src="../207DWESLoginLogoutTema5/webroot/img/uk.png" class="uk" alt="imagenen"></button>
-                <button type="submit" value="italia" name="idiomaBotonSeleccionado"><img src="../207DWESLoginLogoutTema5/webroot/img/italia.png" class="italia" alt="imagenes"></button>
-                <button type="submit" value="tr" name="idiomaBotonSeleccionado" ><img src="../207DWESLoginLogoutTema5/webroot/img/tr.png" class="tr" alt="imagenen"></button>
+                <button type="submit" value="esp" name="idiomaBotonSeleccionado" ><img src="../208DWESLoginLogoutTema5/webroot/img/esp.png" class="esp" alt="imagenes"></button>
+                <button type="submit" value="uk" name="idiomaBotonSeleccionado" ><img src="../208DWESLoginLogoutTema5/webroot/img/uk.png" class="uk" alt="imagenen"></button>
+                <button type="submit" value="italia" name="idiomaBotonSeleccionado"><img src="../208DWESLoginLogoutTema5/webroot/img/italia.png" class="italia" alt="imagenes"></button>
+                <button type="submit" value="tr" name="idiomaBotonSeleccionado" ><img src="../208DWESLoginLogoutTema5/webroot/img/tr.png" class="tr" alt="imagenen"></button>
             </form>
             <form >
                 <input type="submit" value="Iniciar sesión" name="iniciarSesion" class="button"/>
                 <?php
                 if (empty($_REQUEST['idiomaBotonSeleccionado'])) {
-                    echo '<h3 class="buttonidioma">Idioma seleccionado <img src="../207DWESLoginLogoutTema5/webroot/img/' . $_COOKIE['idioma'] . '.png"  alt="imagenes"></h3>';
+                    echo '<h3 class="buttonidioma">Idioma seleccionado <img src="../208DWESLoginLogoutTema5/webroot/img/' . $_COOKIE['idioma'] . '.png"  alt="imagenes"></h3>';
                 } else {
-                    echo '<h3 class="buttonidioma">Idioma seleccionado <img src="../207DWESLoginLogoutTema5/webroot/img/' . $_REQUEST['idiomaBotonSeleccionado'] . '.png" alt="imagenes"></h3>';
+                    echo '<h3 class="buttonidioma">Idioma seleccionado <img src="../208DWESLoginLogoutTema5/webroot/img/' . $_REQUEST['idiomaBotonSeleccionado'] . '.png" alt="imagenes"></h3>';
                 }
                 ?>
                 <input type="submit" value="SALIR" name="salir" class="button"/>
